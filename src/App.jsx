@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from './components/Navbar';
 import DogCard from './components/DogCard';
 import InfoPage from './components/InfoPage';
+import LostSection from './components/LostSection';
 import { dogs } from './data/dogs';
 import './App.css';
 
@@ -13,7 +14,7 @@ export default function App() {
       <Navbar currentView={view} setView={setView} />
       
       <main className="max-w-4xl mx-auto px-4 py-12">
-        {view === 'gallery' ? (
+        {view === 'gallery' && (
           <>
             <div className="mb-12 text-center md:text-left">
               <div className="overflow-hidden">
@@ -36,8 +37,15 @@ export default function App() {
               ))}
             </div>
           </>
-        ) : (
-          <InfoPage />
+        )}
+
+        {view === 'lost' && <LostSection />}
+        {view === 'info' && <InfoPage />}
+        {view === 'adopt' && (
+          <div className="text-center py-20 animate-card-entry">
+            <h2 className="text-white text-lg font-bold uppercase tracking-widest mb-2">Adoption Module</h2>
+            <p className="text-[10px] text-zinc-600 uppercase tracking-tighter">Currently processing applications in District 09</p>
+          </div>
         )}
 
         <footer className="mt-24 py-10 border-t border-zinc-900/50 text-center animate-card-entry" style={{ animationDelay: '800ms' }}>

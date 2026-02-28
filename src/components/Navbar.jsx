@@ -14,7 +14,7 @@ export default function Navbar({ currentView, setView }) {
       </div>
       
       <div className="hidden sm:flex gap-8 text-[9px] uppercase tracking-[0.25em] font-bold">
-        {['Gallery', 'Adopt', 'Info'].map((item) => (
+        {['Gallery', 'Adopt', 'Lost', 'Info'].map((item) => (
           <button 
             key={item} 
             onClick={() => setView(item.toLowerCase())}
