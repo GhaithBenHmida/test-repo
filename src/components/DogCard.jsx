@@ -1,37 +1,25 @@
-export default function DogCard({ dog, index }) {
+export default function DogCard({ dog }) {
   return (
-    <div 
-      className="break-inside-avoid group relative overflow-hidden rounded-lg bg-zinc-900 border border-zinc-900 hover:border-amber-500/30 transition-all duration-700 animate-card-entry"
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
-      <div className="overflow-hidden">
+    <div className="group bg-white rounded-2xl overflow-hidden border border-zinc-100 shadow-sm hover:shadow-md transition-all duration-300">
+      <div className="aspect-square overflow-hidden">
         <img 
           src={dog.image} 
           alt={dog.name} 
-          className="w-full h-auto block transition-transform duration-[1.5s] cubic-bezier(0.2, 1, 0.3, 1) group-hover:scale-105"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
         />
       </div>
-      
-      {/* Information Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
-      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-75">
-        <div className="flex items-center justify-between mb-1">
-          <h3 className="text-[11px] font-black text-white uppercase tracking-wider">{dog.name}</h3>
-          <span className="text-[8px] bg-amber-500 text-black px-1.5 py-0.5 rounded-xs font-bold uppercase animate-float-badge">
+      <div className="p-4">
+        <div className="flex justify-between items-start mb-1">
+          <h3 className="font-bold text-zinc-800">{dog.name}</h3>
+          <span className="text-[10px] uppercase tracking-widest font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">
             {dog.age}
           </span>
         </div>
-        <p className="text-[10px] text-zinc-400 italic">{dog.breed}</p>
+        <p className="text-sm text-zinc-500">{dog.breed}</p>
+        <button className="mt-4 w-full py-2 bg-zinc-50 hover:bg-amber-50 text-zinc-700 hover:text-amber-700 text-xs font-semibold rounded-xl transition-colors">
+          View Details
+        </button>
       </div>
-
-      {/* Static ID Badge */}
-      <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-black/60 backdrop-blur-md rounded-sm text-[7px] font-bold text-zinc-400 uppercase tracking-tighter border border-white/5 group-hover:opacity-0 transition-opacity duration-300">
-        ID-{dog.id.toString().padStart(3, '0')}
-      </div>
-      
-      {/* Hover Pulse Effect */}
-      <div className="absolute inset-0 pointer-events-none border-1 border-white/0 group-hover:border-white/10 transition-colors duration-700" />
     </div>
   );
 }
